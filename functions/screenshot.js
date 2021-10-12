@@ -117,6 +117,10 @@ async function handler(event, context) {
     } else {
       viewport = [1200, 630];
     }
+  } else if (size.includes('x')) {
+    // e.g. /https%3A%2F%2Fwww.11ty.dev%2F/200x300/1:1/
+    let sizeSplit = size.split('x');
+    viewport = [parseInt(sizeSplit[0]), parseInt(sizeSplit[1])];
   }
 
   url = decodeURIComponent(url);
